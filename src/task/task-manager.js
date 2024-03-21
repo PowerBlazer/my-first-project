@@ -22,6 +22,30 @@ class TaskManager {
     printTasks() {
         this.tasks.forEach(task => console.log(task.toString()));
     }
+
+    saveTasks() {
+        try {
+            const tasksData = JSON.stringify(this.tasks, null, 2);
+            fs.writeFileSync(PATH_TASKS_JSON, tasksData);
+        } catch (err) {
+            console.error('Error saving tasks:', err);
+        }
+    }
+
+    addTask(id, description, status) {
+        const newTask = new Task(id, description, status);
+        this.tasks.push(newTask);
+        this.saveTasks();
+    }
+
+    deleteTask(id) {
+        const index = this.tasks.findIndex(task => task.id === id);
+
+        if (index !== -1) {
+            this.tasks.splice(index, 1);
+            this.saveTasks();
+        }
+    }
 }
 
 export default TaskManager;
