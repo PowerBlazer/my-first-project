@@ -1,10 +1,13 @@
 import { readFileSync } from 'fs';
 import Task from './task.js';
+import EventEmitter from 'events';
+import fs from 'fs';
 
 const PATH_TASKS_JSON = './task/tasks.json'
 
-class TaskManager {
+class TaskManager extends EventEmitter {
     constructor() {
+        super();
         this.tasks = [];
     }
 
@@ -36,14 +39,16 @@ class TaskManager {
         const newTask = new Task(id, description, status);
         this.tasks.push(newTask);
         this.saveTasks();
+        this.emit('taskAdded', newTask);
     }
 
     deleteTask(id) {
         const index = this.tasks.findIndex(task => task.id === id);
 
         if (index !== -1) {
-            this.tasks.splice(index, 1);
+            const deletedTask = this.tasks.splice(index, 1)[0];
             this.saveTasks();
+            this.emit('taskDeleted', deletedTask);
         }
     }
 }
