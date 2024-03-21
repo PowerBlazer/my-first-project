@@ -22,7 +22,6 @@ console.log(chalk.blue(tasks.map(p=>p.title)));
 
 
 
-
 const task1 = new Task(1, 'Complete homework', 'In Progress');
 const task2 = new Task(2, 'Buy computer', 'Pending');
 const task3 = new Task(3, 'Clean the house', 'Completed');
