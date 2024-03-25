@@ -1,16 +1,28 @@
 import TaskManager from "./task/task-manager.js";
+import mongoose from 'mongoose';
+import 'dotenv/config'
 
-const taskManager = new TaskManager();
+mongoose.Promise = global.Promise;
 
-taskManager.on('taskAdded', (task) => {
-    console.log(`Task added: ${task.toString()}`);
-});
+mongoDbConnect();
 
+function mongoDbConnect(){
+    const mongoOptions = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        user: process.env.DB_USER,
+        pass: process.env.DB_PASSWORD,
+        dbName: process.env.DB_NAME,
+        authSource: 'admin',
+    };
 
-taskManager.on('taskDeleted', (task) => {
-    console.log(`Task deleted: ${task.toString()}`);
-});
+    mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}`, mongoOptions)
+        .then(() => {
+            console.log("MongoDB connected");
 
-taskManager.loadTasks();
-taskManager.addTask(5, 'Study for exam', 'In Progress');
-taskManager.deleteTask(1);
+            var testManager = new TaskManager();
+
+            testManager.loadTasks();
+        })
+        .catch(err => console.error('MongoDB connection error:', err));
+}

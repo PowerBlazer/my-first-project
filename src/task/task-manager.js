@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import Task from './task.js';
 import EventEmitter from 'events';
 import fs from 'fs';
+import { TaskModel } from './taskModel.js';
 
 const PATH_TASKS_JSON = './task/tasks.json'
 
@@ -16,7 +17,14 @@ class TaskManager extends EventEmitter {
             const data = readFileSync(PATH_TASKS_JSON, 'utf8');
             const tasksData = JSON.parse(data);
 
-            this.tasks = tasksData.map(task => new Task(task.id, task.description, task.status));
+            this.tasks = tasksData.map(taskData =>{
+                const task = new Task(taskData.id, taskData.description, taskData.status);
+                const newTask = new TaskModel(task);
+
+                newTask.save();
+                
+                return newTask;
+            });
         } catch (err) {
             console.error('Error loading tasks:', err);
         }
