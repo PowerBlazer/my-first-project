@@ -2,16 +2,19 @@
   {
     "id": 2,
     "description": "Buy computer",
-    "status": "Pending"
+    "status": "Pending",
+    "title": "Task1"
   },
   {
     "id": 3,
     "description": "Clean the house",
-    "status": "Completed"
+    "status": "Completed",
+    "title": "Task1"
   },
   {
     "id": 5,
     "description": "Study for exam",
-    "status": "In Progress"
+    "status": "In Progress",
+    "title": "Task1"
   }
 ]

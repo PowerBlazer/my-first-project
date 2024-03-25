@@ -1,64 +1,75 @@
 import { readFileSync } from 'fs';
+import { TaskModel } from './taskModel.js';
 import Task from './task.js';
 import EventEmitter from 'events';
-import fs from 'fs';
-import { TaskModel } from './taskModel.js';
 
 const PATH_TASKS_JSON = './task/tasks.json'
 
 class TaskManager extends EventEmitter {
     constructor() {
         super();
-        this.tasks = [];
     }
 
-    loadTasks() {
+    async loadTasks() {
         try {
             const data = readFileSync(PATH_TASKS_JSON, 'utf8');
             const tasksData = JSON.parse(data);
 
-            this.tasks = tasksData.map(taskData =>{
-                const task = new Task(taskData.id, taskData.description, taskData.status);
+            tasksData.forEach(async taskData => {
+                const task = new Task(
+                    taskData.id, 
+                    taskData.description, 
+                    taskData.status, 
+                    taskData.title
+                );
+                
                 const newTask = new TaskModel(task);
 
-                newTask.save();
-                
-                return newTask;
+                await newTask.save();
             });
+
         } catch (err) {
-            console.error('Error loading tasks:', err);
+           throw new Error(err);
         }
     }
 
-    printTasks() {
-        this.tasks.forEach(task => console.log(task.toString()));
-    }
-
-    saveTasks() {
+    async addTask(task) {
+        const taskModel = new TaskModel(task);
+    
         try {
-            const tasksData = JSON.stringify(this.tasks, null, 2);
-            fs.writeFileSync(PATH_TASKS_JSON, tasksData);
-        } catch (err) {
-            console.error('Error saving tasks:', err);
+            return await taskModel.save();
+        } catch (error) {
+            throw new Error(error)
         }
     }
 
-    addTask(id, description, status) {
-        const newTask = new Task(id, description, status);
-        this.tasks.push(newTask);
-        this.saveTasks();
-        this.emit('taskAdded', newTask);
+    async deleteTask(id) {
+        try {
+            const deleteResult = await TaskModel.deleteOne({ id: id });
+
+            if(deleteResult.deletedCount === 0){
+                throw new Error(`Task with id ${id} not found.`)
+            }
+
+        } catch (error) {
+            throw new Error(error)
+        }
+        
     }
 
-    deleteTask(id) {
-        const index = this.tasks.findIndex(task => task.id === id);
+    async getTasks(){
+        try {
+            const tasks = await TaskModel.find();
+            
+            return tasks.map(task => new Task(task.id, task.description, task.status, task.title));
 
-        if (index !== -1) {
-            const deletedTask = this.tasks.splice(index, 1)[0];
-            this.saveTasks();
-            this.emit('taskDeleted', deletedTask);
+        } catch (error) {
+            throw new Error(error)
         }
     }
 }
+
+
+
 
 export default TaskManager;

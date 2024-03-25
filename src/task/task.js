@@ -1,8 +1,9 @@
 class Task {
-    constructor(id, description, status) {
+    constructor(id, description, status, title) {
         this.id = id;
         this.description = description;
         this.status = status;
+        this.title = title
     }
 
     toString() {
