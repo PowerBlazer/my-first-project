@@ -1,0 +1,166 @@
+*{
+    box-sizing: border-box;
+}
+
+h1,h2,h3,h4{
+    font-weight: normal;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    list-style: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #E2E7F4;
+}
+
+header{
+    width: 100%;
+    padding: 20px 30px;
+    background-color: #55B6FB;
+}
+
+header .logotype{
+    color: white;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+main{
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.task-form{
+    padding: 15px 20px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    gap: 10px;
+    background-color: white;
+}
+
+.task-form > .form_header{
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.task-form > .form_inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.task-form > .form_inputs input{
+    padding: 7px;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.task-form > .form_inputs select{
+    padding: 5px;
+}
+
+.task-form > .form_inputs input:focus{
+    border: 1px solid #2091F6;
+}
+
+.task-form > .form_submit{
+    background-color: #2091F6;
+    border: none;
+    padding: 10px 0;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+
+.task-form > .form_submit:hover{
+    background-color: #57ACF8;
+}
+
+.tasks-catalog{
+    width: 500px;
+    min-height: 100px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.tasks-group{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.tasks-group .group-name{
+    color: lightgreen;
+    font-weight: 500;
+    text-decoration: underline;
+    font-size: 17px;
+}
+
+.tasks-group .tasks-list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.tasks-group .task-item{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 6px 0px;
+    align-items: center;
+}
+
+.tasks-group .task-name{
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.tasks-group .task-delete{
+    background-color: transparent;
+    padding: 7px 5px;
+    border-radius: 4px;
+    color: #E3342F;
+    border: 2px solid #E3342F;
+    font-weight: 500;
+}
+
+.tasks-group .task-delete:hover{
+    background-color: #E3342F;
+    color: white;
+}

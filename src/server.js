@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import Task from './task/task.js';
 import { validateTaskData } from './middleware/validateTaskData.js';
 import 'dotenv/config';
-
+import cors from 'cors';
 
 mongoDbConnect();
 
@@ -12,9 +12,16 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.json());
+app.use(cors());
+app.use('/', express.static('client'));
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+});
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join('client', 'Index.html'));
 });
 
 app.get('/tasks', async(req, res) => {

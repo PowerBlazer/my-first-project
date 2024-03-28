@@ -1,20 +1,110 @@
 [
   {
     "id": 2,
-    "description": "Buy computer",
+    "description": "",
     "status": "Pending",
-    "title": "Task1"
+    "title": "Купить компьютер"
   },
   {
     "id": 3,
-    "description": "Clean the house",
+    "description": "",
     "status": "Completed",
-    "title": "Task1"
+    "title": "Убрать дом"
   },
   {
     "id": 5,
-    "description": "Study for exam",
+    "description": "",
     "status": "In Progress",
-    "title": "Task1"
+    "title": "Учиться для экзамена"
+  },
+  {
+    "id": 6,
+    "description": "Работа над презентацией",
+    "status": "In Progress",
+    "title": "Подготовить презентацию"
+  },
+  {
+    "id": 7,
+    "description": "Проверка контрактов",
+    "status": "Pending",
+    "title": "Проверить контракты"
+  },
+  {
+    "id": 8,
+    "description": "Позвонить клиентам",
+    "status": "Completed",
+    "title": "Связаться с клиентами"
+  },
+  {
+    "id": 9,
+    "description": "Закупить офисные принадлежности",
+    "status": "Pending",
+    "title": "Закупить офисные принадлежности"
+  },
+  {
+    "id": 10,
+    "description": "Подготовить отчет",
+    "status": "In Progress",
+    "title": "Подготовить отчет"
+  },
+  {
+    "id": 11,
+    "description": "Провести встречу с партнерами",
+    "status": "Completed",
+    "title": "Провести встречу с партнерами"
+  },
+  {
+    "id": 12,
+    "description": "Подготовить презентацию продукта",
+    "status": "In Progress",
+    "title": "Подготовить презентацию продукта"
+  },
+  {
+    "id": 13,
+    "description": "Организовать поездку на конференцию",
+    "status": "Pending",
+    "title": "Организовать поездку на конференцию"
+  },
+  {
+    "id": 14,
+    "description": "Провести тренинг сотрудников",
+    "status": "Completed",
+    "title": "Провести тренинг сотрудников"
+  },
+  {
+    "id": 15,
+    "description": "Согласовать план мероприятия",
+    "status": "In Progress",
+    "title": "Согласовать план мероприятия"
+  },
+  {
+    "id": 16,
+    "description": "Провести ревизию склада",
+    "status": "Pending",
+    "title": "Провести ревизию склада"
+  },
+  {
+    "id": 17,
+    "description": "Запустить рекламную кампанию",
+    "status": "In Progress",
+    "title": "Запустить рекламную кампанию"
+  },
+  {
+    "id": 18,
+    "description": "Оформить документы для нового сотрудника",
+    "status": "Completed",
+    "title": "Оформить документы для нового сотрудника"
+  },
+  {
+    "id": 19,
+    "description": "Провести анализ рынка",
+    "status": "Pending",
+    "title": "Провести анализ рынка"
+  },
+  {
+    "id": 20,
+    "description": "Подготовить презентацию для инвесторов",
+    "status": "In Progress",
+    "title": "Подготовить презентацию для инвесторов"
   }
 ]

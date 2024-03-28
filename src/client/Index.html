@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Список задач</title>
+</head>
+<body>
+    <header>
+        <div class="logotype">Список задач</div>
+    </header>
+    <main class="main">
+        <div class="task-form">
+            <div class="form_header">Новая задача</div>
+            <div class="form_inputs">
+                <input class="task-title" id="title-input" type="text" placeholder="Название"/>
+                <select name="task-status" id="status-select">
+                    <option value="none">Выберите статус задачи</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                    <option value="In Progress">In Progress</option>
+                </select>
+                <input class="task-description" id="description-input" type="text" placeholder="Описание">
+            </div>
+            <button class="form_submit" id="create-button" type="button">Создать задачу</button>
+        </div>
+        <div class="tasks-catalog"></div>
+    </main>
+</body>
+<script src="./js/main.js" type="module"></script>
+</html>
